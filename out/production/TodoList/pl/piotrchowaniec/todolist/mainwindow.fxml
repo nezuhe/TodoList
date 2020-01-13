@@ -1,0 +1,68 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id="mainBorderPane" fx:controller="pl.piotrchowaniec.todolist.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New..." onAction="#showAddItemDialog"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox>
+                    <Button text="New..." onAction="#showAddItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add new Todo Item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <image>
+                                    <Image url="D:/jlfgr-1_0/jlfgr-1.0.jar!/toolbarButtonGraphics/general/New16.gif"/>
+                                    <!--<Image url="D:/- MOJE -/dev/jlfgr-1_0/jlfgr-1.0.jar!/toolbarButtonGraphics/general/New16.gif"/>-->
+                                    <!--<Image url="@/New24.gif"/>-->
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <ToggleButton text="Today's Items" fx:id="todayItemsToggle" onAction="#todayItemsToggleHandler">
+                    <!--<ToggleButton text="Today's Items" fx:id="todayItemsToggle">-->
+                        <tooltip>
+                            <Tooltip text="Show today's items"/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleDeleteKeyPressed"/>
+    </left>
+    <center>
+        <VBox>
+            <TextArea fx:id="todoItemDetails" VBox.vgrow="ALWAYS" wrapText="true"/>
+            <HBox style="-fx-background-color: white">
+                <Label text="Due: " fx:id="dueLabel">
+                    <font>
+                        <Font name="Arial" size="14"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel">
+                    <font>
+                        <Font name="Arial bold" size="14"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
